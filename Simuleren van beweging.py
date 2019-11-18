@@ -1,11 +1,11 @@
-import numpy
+import numpy as np
 import matplotlib.pyplot as plt
 
 
 def forward_euler(h=0.1, g=9.81, friction=0.1, steps=50):
-    t = numpy.zeros(steps+1)
-    x = numpy.zeros(steps+1)
-    v = numpy.zeros(steps+1)
+    t = np.zeros(steps+1)
+    x = np.zeros(steps+1)
+    v = np.zeros(steps+1)
 
     for step in range(steps):
         t[step + 1] = h * (step + 1)
