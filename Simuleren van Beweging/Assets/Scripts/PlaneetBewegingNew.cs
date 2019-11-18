@@ -19,3 +19,4 @@ public class PlaneetBewegingNew : MonoBehaviour
         transform.localPosition += new Vector3((float)Math.Cos(hoek), 0, (float)Math.Sin(hoek)) * speed * Time.deltaTime;
     }
 }
+
