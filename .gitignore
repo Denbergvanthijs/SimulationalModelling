@@ -1,19 +1,19 @@
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
-#
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
-/[Pp]roject[Ss]ettings/
-/[Mm]ono[Bb]leeding[Ee]dge/
-/Simuleren van Beweging_Data/
-/UIElementsSchema/
-/[Pp]ackages/
+
+/Simuleren van Beweging/[Ll]ibrary/
+/Simuleren van Beweging/[Tt]emp/
+/Simuleren van Beweging/[Oo]bj/
+/Simuleren van Beweging/[Bb]uild/
+/Simuleren van Beweging/[Bb]uilds/
+/Simuleren van Beweging/[Ll]ogs/
+/Simuleren van Beweging/[Mm]emory[Cc]aptures/
+/Simuleren van Beweging/[Pp]roject[Ss]ettings/
+/Simuleren van Beweging/[Mm]ono[Bb]leeding[Ee]dge/
+/Simuleren van Beweging/[Ss]imuleren van [Bb]eweging_[Dd]ata/
+/Simuleren van Beweging/[Uu][Ii][Ee]lements[Ss]chema/
+/Simuleren van Beweging/[Pp]ackages/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
@@ -26,6 +26,7 @@
 
 # Visual Studio cache directory
 .vs/
+.idea/
 
 # Gradle cache directory
 .gradle/
