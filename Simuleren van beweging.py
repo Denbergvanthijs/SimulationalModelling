@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+"""
+Onderstaande code is een aanpassing van de Udacity Course
+"""
+
 
 def forward_euler(h=0.1, g=9.81, friction=0.1, steps=50):
     t = np.zeros(steps+1)
