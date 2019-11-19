@@ -565,7 +565,7 @@ MonoBehaviour:
   Acceleration: {x: 0, y: 0, z: 0}
   Velocity: {x: 0, y: 0, z: 0}
   mass: 10
-  stretch: 10
+  veerConst: 5
 --- !u!54 &1144553326
 Rigidbody:
   m_ObjectHideFlags: 0
