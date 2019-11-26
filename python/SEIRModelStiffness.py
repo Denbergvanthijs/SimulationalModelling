@@ -59,9 +59,10 @@ def plot_me(pop, e, i, r, h=0.5, transm_coeff=5e-9, lat_time=1, infec_time=5, en
 
 populatie = 9.7e7
 coeff = 0.04 / populatie * 6
-print(f"Transmissie coëfficiënt: {coeff:0.2e}") 
+infec_time=5
+herd = populatie - ((1/infec_time) / coeff)
 
-herd = populatie - ((1/5) / coeff)
+print(f"Transmissie coëfficiënt: {coeff:0.2e}") 
 print(f"Herd Immunity: {herd:_.0f} mensen of {(herd / populatie)*100:.2f}% van de populatie") 
 
 plot_me(populatie, 0, 1e5, 1e6, transm_coeff=coeff, lat_time=2, end_time=300, h=1)
