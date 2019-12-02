@@ -5,6 +5,7 @@ import matplotlib.pylab as plt
 Onderstaande code is een aanpassing van de Udacity Course 'Differential Equations in action'
 """
 
+
 def backward_euler(pop, eStart, iStart, rStart, h=0.5, transm_coeff=5e-9, lat_time=1, infec_time=5, end_time=60):
     """Verplichtte input: Start populatie en de startpopulaties van e, i en r"""
     steps = int(end_time / h)
@@ -21,7 +22,7 @@ def backward_euler(pop, eStart, iStart, rStart, h=0.5, transm_coeff=5e-9, lat_ti
     r[0] = rStart
 
     for step in range(steps):
-        p = ((1 + h / infec_time) / (h * transm_coeff) + i[step]) / (h / lat_time) - (s[step] + e[step]) / (1 + h / lat_time) 
+        p = ((1 + h / infec_time) / (h * transm_coeff) + i[step]) / (h / lat_time) - (s[step] + e[step]) / (1 + h / lat_time)
         q = -((1 + h / infec_time) / (h * transm_coeff) * e[step] + (s[step] + e[step]) * i[step]) / ((1 + h / lat_time) * (h / lat_time))
 
         e[step + 1] = -0.5 * p + (0.25 * p ** 2 - q) ** 0.5
@@ -40,7 +41,7 @@ def plot_me(pop, e, i, r, h=0.5, transm_coeff=5e-9, lat_time=1, infec_time=5, en
     plt.plot(x, eArr, label="E")
     plt.plot(x, iArr, label="I")
     plt.plot(x, rArr, label="R")
-    
+
     plt.title("SEIR-model met correctie voor stiffness")
     plt.xlabel('Tijd in dagen')
     plt.ylabel('Aantal personen')
@@ -59,10 +60,10 @@ def plot_me(pop, e, i, r, h=0.5, transm_coeff=5e-9, lat_time=1, infec_time=5, en
 
 populatie = 9.7e7
 coeff = 0.04 / populatie * 6
-infec_time=5
+infec_time = 5
 herd = populatie - ((1/infec_time) / coeff)
 
-print(f"Transmissie coëfficiënt: {coeff:0.2e}") 
-print(f"Herd Immunity: {herd:_.0f} mensen of {(herd / populatie)*100:.2f}% van de populatie") 
+print(f"Transmissie coëfficiënt: {coeff:0.2e}")
+print(f"Herd Immunity: {herd:_.0f} mensen of {(herd / populatie)*100:.2f}% van de populatie")
 
 plot_me(populatie, 0, 1e5, 1e6, transm_coeff=coeff, lat_time=2, end_time=300, h=1)

@@ -4,7 +4,7 @@ import numpy as np
 
 def tank(ts=120, liters=1000, litersIn=6, litersUit=6, concGroei=0.1):
     c = 0
-    conc = [c := c + (litersIn * concGroei / liters) - (litersUit / liters * c) for _ in range(ts + 1)]
+    conc = [c:= c + (litersIn * concGroei / liters) - (litersUit / liters * c) for _ in range(ts + 1)]
     return conc, np.arange(ts + 1)
 
 
