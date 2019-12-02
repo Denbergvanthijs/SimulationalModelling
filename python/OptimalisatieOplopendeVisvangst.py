@@ -1,17 +1,17 @@
 import matplotlib.pylab as plt
-import numpy
+import numpy as np
 
 
 def total_harvest(max_growth_rate=0.5, carrying_cap=2e6, MSY=0.8, end_time=10, t=0.1, vangst_start=0):
     max_harv_rate = MSY * 2.5e5
     ts = int(end_time / t)
 
-    fish = numpy.zeros(ts + 1)
+    fish = np.zeros(ts + 1)
     fish[0] = 2e5
     results = []
 
-    for ramp_start in numpy.arange(0, end_time+0.01, 0.5):
-        for ramp_end in numpy.arange(ramp_start, end_time+0.01, 0.5):
+    for ramp_start in np.arange(0, end_time+0.01, 0.5):
+        for ramp_end in np.arange(ramp_start, end_time+0.01, 0.5):
             total_harvest = 0
             is_extinct = False
 
