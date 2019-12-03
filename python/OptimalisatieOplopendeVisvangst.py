@@ -36,7 +36,7 @@ def total_harvest(max_growth_rate=0.5, carrying_cap=2e6, MSY=0.8, end_time=10, t
                     current_harvest = t * harvest_rate
                     fish_next_step = fish[step] + t * (max_growth_rate * (1. - fish[step] / carrying_cap) * fish[step] - harvest_rate)
 
-                    if fish_next_step <= 0.:
+                    if fish_next_step <= 0:
                         current_harvest = fish[step]
                         is_extinct = True
                         fish_next_step = 0
