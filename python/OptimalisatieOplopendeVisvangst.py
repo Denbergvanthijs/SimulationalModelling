@@ -24,7 +24,7 @@ def total_harvest(max_growth_rate=0.5, carrying_cap=2e6, MSY=0.8, end_time=10, t
                 elif time > ramp_start:
                     harvest_factor = (time - ramp_start) / (ramp_end - ramp_start)
 
-                if ramp_start < vangst_start:
+                if ramp_start < vangst_start or ramp_start == ramp_end:
                     harvest_factor = 0.0
 
                 harvest_rate = harvest_factor * max_harv_rate
