@@ -28,6 +28,7 @@
 .vs/
 .vscode/
 .idea/
+**/*/__pycache__
 
 # Gradle cache directory
 .gradle/

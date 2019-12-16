@@ -45,7 +45,7 @@ def generator(samples=1_000, seed=generate_seed()):
     return numbersFloat
 
 
-def plot_me(samples=1_000, seed=generate_seed()):
+def plot_distribution(samples=1_000, seed=generate_seed()):
     """
     Plot de eigen generator en een baseline.
     De baseline is de ingebouwde random.uniform() generator.
@@ -73,5 +73,4 @@ def plot_me(samples=1_000, seed=generate_seed()):
 
 
 if __name__ == "__main__":
-    plot_me(samples=10_000)
-    # print([(n:=generate_seed(), len(str(n))) for _ in range(10)])
+    plot_distribution(samples=10_000)
