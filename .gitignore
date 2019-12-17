@@ -29,6 +29,7 @@
 .vscode/
 .idea/
 **/*/__pycache__
+.ipynb_checkpoints
 
 # Gradle cache directory
 .gradle/

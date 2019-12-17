@@ -24,12 +24,12 @@ def generate_seed():
     return seed
 
 
-def generator_midsquare(samples=1_000, seed=generate_seed()):
+def generator_endsquare(samples=1_000, seed=generate_seed()):
     """
     Random Number Generator door middel van de 'midsquare' methode.
     Echter neemt deze generator de laatste 8 getallen in plaats van het midden.
 
-    Normalisatie = (x - min) / (max - min)
+    Normalisatie = (x - min) / (max - min) -> Getallen omzetten naar een waarde tussen 0 en 1
     Gebruiker kan eigen samplesize en seed meegeven
     """
     numbersInt = np.zeros(samples, dtype='int64')
@@ -54,7 +54,7 @@ def plot_distribution(samples=1_000, seed=generate_seed()):
     Plot de eigen generator en een baseline.
     De baseline is de ingebouwde random.uniform() generator.
     """
-    generated_vals = generator_midsquare(samples=samples, seed=seed)
+    generated_vals = generator_endsquare(samples=samples, seed=seed)
     uniques = len(set(generated_vals))
 
     baseline = []
