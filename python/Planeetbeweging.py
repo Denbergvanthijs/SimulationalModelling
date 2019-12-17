@@ -1,6 +1,6 @@
+import matplotlib.pylab as plt
 import numpy as np
 from numpy.linalg import norm
-import matplotlib.pylab as plt
 
 """
 Onderstaande code is een aanpassing van de Udacity Course

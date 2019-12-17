@@ -1,5 +1,6 @@
-import numpy as np
 import matplotlib.pylab as plt
+import numpy as np
+
 
 """
 Onderstaande code is een aanpassing van de Udacity Course 'Differential Equations in action'
