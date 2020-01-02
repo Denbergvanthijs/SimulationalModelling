@@ -1,5 +1,6 @@
 import matplotlib.pylab as plt
 import numpy as np
+import seaborn as sns
 from numpy.linalg import norm
 
 """
@@ -33,13 +34,19 @@ def ship_trajectory():
     return x, v
 
 
-x, v = ship_trajectory()
+def plot():
+    x, v = ship_trajectory()
+
+    sns.set(context="notebook")
+    plt.plot(x[:, 0], x[:, 1])
+    plt.scatter(0, 0)
+
+    plt.axis('equal')
+    plt.xlabel('Longitudinal position in m')
+    plt.ylabel('Lateral position in m')
+
+    plt.show()
 
 
-plt.plot(x[:, 0], x[:, 1])
-plt.scatter(0, 0)
-plt.axis('equal')
-axes = plt.gca()
-axes.set_xlabel('Longitudinal position in m')
-axes.set_ylabel('Lateral position in m')
-plt.show()
+if __name__ == "__main__":
+    plot()

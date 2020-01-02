@@ -1,5 +1,6 @@
 import matplotlib.pylab as plt
 import numpy as np
+import seaborn as sns
 
 
 def total_harvest(max_growth_rate=0.5, carrying_cap=2e6, MSY=0.8, end_time=10, t=0.1, vangst_start=0):
@@ -48,14 +49,18 @@ def total_harvest(max_growth_rate=0.5, carrying_cap=2e6, MSY=0.8, end_time=10, t
     return results
 
 
-def plot_me(**kwargs):
+def plot(**kwargs):
     results = total_harvest(**kwargs)
 
     print([(r[0], r[1], r[2]) for r in results if r[2] == max([r[2] for r in results])])  # Max harvest
+    sns.set(context="notebook")
     plt.scatter([r[0] for r in results], [r[1] for r in results], [5e-11 * r[2] ** 2. for r in results], edgecolor='none')
     plt.xlabel('Ramp start in years')
     plt.ylabel('Ramp end in years')
+    plt.xlim(left=0)
+    plt.ylim(bottom=0)
     plt.show()
 
 
-plot_me(MSY=0.7, vangst_start=2)
+if __name__ == "__main__":
+    plot(MSY=0.7, vangst_start=2)

@@ -1,5 +1,6 @@
 import matplotlib.pylab as plt
 import numpy as np
+import seaborn as sns
 
 
 """
@@ -34,37 +35,39 @@ def backward_euler(pop, eStart, iStart, rStart, h=0.5, transm_coeff=5e-9, lat_ti
     return s, e, i, r, times
 
 
-def plot_me(pop, e, i, r, h=0.5, transm_coeff=5e-9, lat_time=1, infec_time=5, end_time=60):
+def plot(pop, e, i, r, h=0.5, transm_coeff=5e-9, lat_time=1, infec_time=5, end_time=60):
     """Verplichtte input: Start populatie en de startpopulaties van e, i en r"""
     sArr, eArr, iArr, rArr, x = backward_euler(pop, e, i, r, h=h, transm_coeff=transm_coeff, lat_time=lat_time, infec_time=infec_time, end_time=end_time)
 
-    plt.plot(x, sArr, label="S")
-    plt.plot(x, eArr, label="E")
-    plt.plot(x, iArr, label="I")
-    plt.plot(x, rArr, label="R")
+    sns.set(context="notebook")
+    sns.lineplot(x, sArr, label="S")
+    sns.lineplot(x, eArr, label="E")
+    sns.lineplot(x, iArr, label="I")
+    sns.lineplot(x, rArr, label="R")
 
     plt.title("SEIR-model met correctie voor stiffness")
     plt.xlabel('Tijd in dagen')
     plt.ylabel('Aantal personen')
     plt.xlim(0, end_time)
     plt.ylim(0, pop)
-    # plt.yscale("log")
+
     plt.legend()
     plt.show()
 
 
-# plot_me(1e8, 0, 1e5, 1e6, end_time=120)  # Standaard waardes van Udacity
+# plot(1e8, 0, 1e5, 1e6, end_time=120)  # Standaard waardes van Udacity
 # Studentnummer: 1740697
 # Totale populatie:                 97 mil.
 # Gem. contacten per dag:           6
 # Kans op infectie per contact:     4
 
-populatie = 9.7e7
-coeff = 0.04 / populatie * 6
-infec_time = 5
-herd = populatie - ((1/infec_time) / coeff)
+if __name__ == "__main__":
+    populatie = 9.7e7
+    coeff = 0.04 / populatie * 6
+    infec_time = 5
+    herd = populatie - ((1/infec_time) / coeff)
 
-print(f"Transmissie coëfficiënt: {coeff:0.2e}")
-print(f"Herd Immunity: {herd:_.0f} mensen of {(herd / populatie)*100:.2f}% van de populatie")
+    print(f"Transmissie coëfficiënt: {coeff:0.2e}")
+    print(f"Herd Immunity: {herd:_.0f} mensen of {(herd / populatie)*100:.2f}% van de populatie")
 
-plot_me(populatie, 0, 1e5, 1e6, transm_coeff=coeff, lat_time=2, end_time=300, h=1)
+    plot(populatie, 0, 1e5, 1e6, transm_coeff=coeff, lat_time=2, end_time=300, h=1)

@@ -2,6 +2,7 @@ import math
 
 import matplotlib.pylab as plt
 import numpy as np
+import seaborn as sns
 from numpy.linalg import norm
 
 
@@ -32,20 +33,20 @@ def heun(steps=100):
     return t, u, e
 
 
-fig, axes = plt.subplots()
+def plot():
+    sns.set(context='notebook')
+    xs = [5, 10, 20, 100]  # Gevraagd aantal steps volgens opdracht
+    for x in xs:
+        t, u, e = heun(steps=x)
+        sns.lineplot(t, u, label=f"n = {x}\nu(1) = {u[-1]:.3f}")
 
-xs = [5, 10, 20, 100]  # Gevraagd aantal steps volgens opdracht
-for x in xs:
-    t, u, e = heun(steps=x)
-    plt.plot(t, u, label=f"n = {x}\nu(1) = {u[-1]:.3f}")
-
-plt.plot(t, e, color='black', label=f"u(t) = e^t\nu(1) = {math.e:0.3f}")
-plt.axhline(y=math.e, color='black', linestyle='--')
-plt.xlim(0, 1)
-plt.ylim(1, 3)
-plt.title("Hogere Orde Benadering: Heun\n Naarmate de stepsize kleiner wordt, nadert de lijn e^t")
-plt.xlabel("t (per 1)/n\nwaarbij n = aantal steps")
-plt.ylabel("u(t) voor n-aantal steps")
-plt.legend()
-plt.tight_layout()
-plt.show()
+    plt.plot(t, e, color='black', label=f"u(t) = e^t\nu(1) = {math.e:0.3f}")
+    plt.axhline(y=math.e, color='black', linestyle='--')
+    plt.xlim(0, 1)
+    plt.ylim(1, 3)
+    plt.title("Hogere Orde Benadering: Heun\n Naarmate de stepsize kleiner wordt, nadert de lijn e^t")
+    plt.xlabel("t (per 1)/n\nwaarbij n = aantal steps")
+    plt.ylabel("u(t) voor n-aantal steps")
+    plt.legend()
+    plt.tight_layout()
+    plt.show()

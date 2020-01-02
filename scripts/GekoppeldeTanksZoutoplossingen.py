@@ -1,5 +1,6 @@
 import matplotlib.pylab as plt
 import numpy as np
+import seaborn as sns
 
 
 def tanks(ts, liters, inL=6, uitL=4, uitR=3, uitR2=2, inR=1, cL=0.2, cR=0.1, kgL=0, kgR=20):
@@ -18,10 +19,11 @@ def tanks(ts, liters, inL=6, uitL=4, uitR=3, uitR2=2, inR=1, cL=0.2, cR=0.1, kgL
     return tank1, tank2, np.arange(ts + 1)
 
 
-def plotMe(ts, liters, **kwargs):
+def plot(ts, liters, **kwargs):
     tank1, tank2, tsArr = tanks(ts, liters, **kwargs)
-    plt.plot(tsArr, tank1, label=f"Tank 1; Eindconc: {tank1[-1]:.2f}")
-    plt.plot(tsArr, tank2, label=f"Tank 2; Eindconc: {tank2[-1]:.2f}")
+    sns.set(context="notebook")
+    sns.lineplot(tsArr, tank1, label=f"Tank 1; Eindconc: {tank1[-1]:.2f}")
+    sns.lineplot(tsArr, tank2, label=f"Tank 2; Eindconc: {tank2[-1]:.2f}")
 
     plt.xlim(0, ts)
     plt.ylim(bottom=0)
@@ -30,7 +32,8 @@ def plotMe(ts, liters, **kwargs):
     plt.ylabel("Concentratie in kg/L")
     plt.legend(loc="lower right")
     plt.tight_layout()
+    plt.show()
 
 
-plotMe(250, 100)
-plt.show()
+if __name__ == "__main__":
+    plot(250, 100)
